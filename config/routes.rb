@@ -5,4 +5,12 @@ Bazarserver::Application.routes.draw do
   resources :gruposconfs
   resources :confs
   
+  root :to => 'home#index'
+
+  match 'micuenta' => "user#edit",          :as => :micuenta
+  match 'login' => "user_sessions#new",      :as => :login
+  match 'logout' => "user_sessions#destroy", :as => :logout
+  match 'home' => "home#index"
+  match '/clusters/activar/:id' => 'clusters#activar', :constrants => { :id => /\d+/ }, :as => :activar_cluster
+
 end
