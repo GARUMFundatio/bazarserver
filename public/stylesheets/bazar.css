@@ -1,0 +1,280 @@
+.body {
+	float: top;
+	width: 960x;
+    background: #F9F9F9;
+}
+
+#header {     
+	color: #FBD600;           
+    background-color: #810E13;
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    -moz-border-radius-topright: 1em;
+    -moz-border-radius-topleft: 1em;
+    -webkit-border-top-right-radius: 1em;
+    -webkit-border-top-left-radius: 1em;
+}
+
+.container {
+	width: 960px;
+    font-size: 13px;
+    background-color: #FFF;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border: 1px solid black;
+    border-radius: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    box-shadow: 0px 0px 15px #888;
+    -moz-box-shadow: 0px 0px 15px #888;
+    -webkit-box-shadow: 0px 0px 15px #888;
+}
+
+#content {
+	float: left;
+    background: #F9F9F9;
+	width: 960px;
+}
+
+#contenido {
+	float: left;
+    background: #F9F9F9;
+	width: 700px;
+}
+
+#footer {
+    border-top: 1px solid black;
+    color: #FBD600;
+    background-color: #810E13;
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+    -moz-border-radius-bottomright: 1em;
+    -moz-border-radius-bottomleft: 1em;
+    -webkit-border-bottom-right-radius: 1em;
+    -webkit-border-bottom-left-radius: 1em;
+}
+
+#title {
+    font-size: 2.5em !important;
+    text-align: left;
+    margin-bottom: 10px !important;
+    color: #fefefe !important;
+}
+
+#slogan {
+    font-size: 1em !important;
+    text-align: left;
+}
+
+#abstractText {
+    width: 100%;
+    height: 90px !important;
+     border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0px 0px 2px #ccc;
+    -moz-box-shadow: 0px 0px 2px #ccc;
+    -webkit-box-shadow: 0px 0px 2px #ccc;
+}
+
+#eMail {
+    width: 180px !important;
+     border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0px 0px 2px #ccc;
+    -moz-box-shadow: 0px 0px 2px #ccc;
+    -webkit-box-shadow: 0px 0px 2px #ccc;
+}
+
+#result {
+    text-align: center;
+}
+
+.error {
+    margin-left: 50px;
+    margin-right: 50px;
+    display:none;
+}
+
+.cursorHelp {
+  cursor: help;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+#sources {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    display: none;
+}
+
+#sources > div {
+    margin-right: 0 !important;
+}
+
+#semanticTypes {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    display: none;
+}
+
+#semanticTypes > div {
+    margin-right: 0 !important;
+}
+
+form > div > label {
+    font-size: 13px !important;    
+}
+
+form label:hover {
+    cursor: pointer;
+    color: #5990B9;
+}
+
+#maxConcepts {
+    width: 180px;
+    background-color: white;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0 0 2px #ccc;
+    -moz-box-shadow: 0px 0px 2px #ccc;
+    -webkit-box-shadow: 0px 0px 2px #ccc;
+}
+
+.menuicon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+
+.separator {
+   display:none;
+}
+
+img {
+	border-width:0px;
+}
+
+input {
+    cursor: pointer !important;
+}
+
+textarea {
+    cursor: pointer !important;
+}
+
+select {
+    cursor: pointer !important;
+}
+
+
+#sidebar {
+  float: left;
+  width: 175px;
+}
+
+
+#sidebar ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+#sidebar ul h3 {
+  margin-top: 25px;
+  font-size: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+#sidebar li {
+  list-style-type: none;
+}
+#sidebar ul.links li {
+  margin-bottom: 5px;
+}
+
+table.tabla {
+    border: 1px solid #497BAF;
+    background: white;
+}
+
+table.tabla th {
+    background: #810E13;
+    color: #FBD600;
+}
+
+table.tabla tr {
+    background: white;
+}
+
+table.tabla td {
+    background: #e9e9e9;
+	text-align: left;
+}
+
+table.tabla tr:hover {
+    border: 1px solid green;
+}
+
+.datostd {
+	text-align: right;
+}
+
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px; /*--Set height of tabs--*/
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 650px;
+}
+ul.tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+	line-height: 31px; /*--Vertically aligns the text within the tab--*/
+	border: 1px solid #999;
+	border-left: none;
+	margin-bottom: -1px; /*--Pull the list item down 1px--*/
+	overflow: hidden;
+	position: relative;
+	background: #e0e0e0;
+}
+ul.tabs li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	font-size: 1em;
+	padding: 0 10px;
+	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+	outline: none;
+}
+ul.tabs li a:hover {
+	background: #ccc;
+}
+html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+	background: #fff;
+	border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+}
+
+.tab_container {
+	border: 1px solid #999;
+	border-top: none;
+	overflow: hidden;
+	clear: both;
+	float: left; width: 650px;
+	background: #fff;
+}
+.tab_content {
+	padding: 8px;
+	font-size: 1.2em;
+}
+
