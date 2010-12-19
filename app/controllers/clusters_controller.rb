@@ -1,7 +1,6 @@
 class ClustersController < ApplicationController
 
   layout "bazar"
-  respond_to :json
   
   def index
     @clusters = Cluster.all.paginate(:page => params[:page], :per_page => 15)
@@ -9,6 +8,7 @@ class ClustersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clusters }
+      format.json { render :json => @clusters }
     end
   end
 
@@ -27,7 +27,6 @@ class ClustersController < ApplicationController
     respond_to do |format|
       format.html 
       format.xml  { render :xml =>  @cluster }
-      format.json { render :json => @cluster }
     end
   end
 
