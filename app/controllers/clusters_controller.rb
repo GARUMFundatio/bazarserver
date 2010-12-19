@@ -1,6 +1,7 @@
 class ClustersController < ApplicationController
 
   layout "bazar"
+  respond_to :json
   
   def index
     @clusters = Cluster.all.paginate(:page => params[:page], :per_page => 15)
