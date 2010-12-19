@@ -24,8 +24,9 @@ class ClustersController < ApplicationController
     @cluster = Cluster.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @cluster }
+      format.html 
+      format.xml  { render :xml =>  @cluster }
+      format.json { render :json => @cluster }
     end
   end
 
