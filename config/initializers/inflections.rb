@@ -16,7 +16,7 @@ inflect.singular /([aeiou])s([A-Z]|_)([a-z]+)([rlnd])es($)/, '\1\2\3\4\5'
 inflect.singular /([rlnd])es([A-Z]|_)([a-z]+)([aeiou])s($)/, '\1\2\3\4\5'
 
 inflect.irregular 'noticia', 'noticias'
-inflect.irregular 'cluster', 'cluters'
+inflect.irregular 'cluster', 'clusters'
 inflect.irregular 'user', 'users'
 inflect.irregular 'conf', 'confs'
 inflect.irregular 'gruposconf', 'gruposconfs'
