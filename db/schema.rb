@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101219135955) do
+ActiveRecord::Schema.define(:version => 20101229135955) do
 
   create_table "clusters", :force => true do |t|
     t.string   "nombre"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(:version => 20101219135955) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "noticias", :force => true do |t|
+    t.text     "titulo"
+    t.text     "texto"
+    t.datetime "fecha"
+    t.integer  "visible"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "noticias", ["fecha"], :name => "index_noticia_fecha"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
