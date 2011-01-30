@@ -1,10 +1,150 @@
-<% if (!Bazarcms::Empresa.nil?) then %>
-	<div id="empresas">
-	
-		<script>
-		$('#empresas').load("/bazarcms/dashboard");
-		</script>
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+
+<div class="home" style="width:670px;background:white;padding:5px;align:center;margin:0 auto;">
+
+<div id="tabs" style="text-align: left;">
+	<ul>
+		<li><a href="#tabs-1">Noticias</a></li>
+		<li><a href="#tabs-2">¿Qué es Bazar?</a></li>
+		<li><a href="#tabs-3">Empresas</a></li>
+		<li><a href="#tabs-4">Dashboard</a></li>
+		<li><a href="#tabs-5">Registrarse</a></li>
+		<li><a href="/login?display=inside">Entrar</a></li>
+	</ul>
+
+	<div id="tabs-1">
+
+		  <% @noticias = Noticia.where("visible = 1").order("fecha desc").limit(5)  %>
+		  <% for noticia in @noticias %>
+			<b><%= noticia.fecha.strftime("%d-%m-%Y") -%> <%= noticia.titulo -%></b> 
+			<br />
+			<%= noticia.texto -%> 
+			<br/><br/>
+
+		  <% end %>
+		
 	</div>
-<% else %>
-Instale el módulo de bazarcms, no parece que este instalado.
-<% end %>
+	
+	
+	<div id="tabs-2">
+		<a href="http://garumfundatio.org/proyectos/bazar">Bazar</a> es el primer programa desarrollado por <a href="http://garumfundatio.org/">Garum</a>. <br/><br/> 
+		Es <strong>software libre</strong>, tiene una <strong>estructura distribuida</strong> y sirve para <strong>generar mercados</strong>.<br/><br/> 
+		<strong>Software libre</strong> no sólo quiere decir que el código sea abierto y que no haya que pagar licencias de uso. Quiere decir que hay una comunidad de desarrolladores, alimentada y animada por la fundación, innovando y mejorando las funcionalidades permanentemente. Por eso las empresas locales de desarrolladores pueden dar servicio sobre Bazar y desarrollar, sin costes y con todo el apoyo, nuevas funcionalidades para necesidades específicas. En consecuencia, invertir en una instalación de Bazar para un cluster de empresas o una asociación empresarial significa que el dinero y el I+D se quedarán y desarrollarán en lo local.<br/><br/> 
+		Que la <strong>estructura sea distribuida</strong> significa que la información y los datos no dependen de una empresa o institución centralizadora externa. Las instalaciones de Bazar son autónomas, aunque se interconecten&#8230; y lo mejor es que se interconectan, <strong>poniendo en contacto a clientes y proveedores en todo el mundo</strong>.<br/><br/> 
+		Pero realmente, lo más valioso de Bazar es aquello para lo que sirve. <strong>Bazar facilita que las pequeñas empresas y los emprendedores encuentren nuevos mercados a escala global en un entorno confiable sin los costes de la internacionalización física</strong>.<br/><br/> 
+		<h2>Funcionalidades del proyecto Bazar</h2> 
+		<a href="http://garumfundatio.org/proyectos/bazar">Bazar</a> se parece a una red social. Cada empresa tiene su ficha, publica sus noticias, busca empresas que puedan estar interesadas en sus productos o que le provean con confiabilidad a mejores precios.<br/><br/> 
+		Pero a diferencia de una red social Bazar está limitado a empresas y a grupos y asociaciones de empresas. Por eso <strong>el corazón de Bazar es un sistema de ofertas y pedidos optimizado para ayudar a cada empresa a encontrar nuevos clientes, distribuidores y proveedores</strong>.<br/><br/> 
+		Pero el mercado tradicional no era sólo un lugar para la compraventa. Era también un espacio de interacción política y social y -se olvida demasiado a menudo- el lugar donde maestros, filósofos y jueces arbitraban conflictos y se encontraban con sus discípulos.  El mercado no es exclusivamente una relación monetaria sino sobre todo una relación social.<br/><br/>
+		Recogiendo ese espíritu <a href="http://garumfundatio.org/proyectos/bazar">Bazar</a> incorporará módulos de <strong>rating, e-learning, arbitraje, mensajería interna, publicación de contenidos</strong> y muchos más.<br/><br/> 
+		En pocas palabras: <a href="http://garumfundatio.org/proyectos/bazar">Bazar</a> es un <strong>generador de mercados</strong> que sirve a las empresas y los emprendedores para<strong> aumentar sus ventas y mejorar sus estrategias de compras</strong>, al tiempo que les facilita establecer alianzas, conocer mejor su sector y <strong>posicionarse en mercados internacionales vendiendo desde el primer día</strong>.<br/><br/>
+	</div>
+	
+	
+	<div id="tabs-3">
+	
+
+		<div class="directorio">
+
+		  <div id="tabs2">
+		  <ul>
+		  <% letras = "" %>
+		  <% ultima = "" %>
+		  <% @empresas = Bazarcms::Empresa.where("1 = 1").order("nombre asc")  %>
+		  <% for empre in @empresas %>
+			  <% if ultima != empre.nombre[0].chr.upcase %>
+			    <% ultima = empre.nombre[0].chr.upcase %>
+				<% letras += ultima %>
+				<li><a href="#tabs2-<%= empre.nombre[0].chr.upcase -%>"><%= empre.nombre[0].chr.upcase -%></a></li>
+		    <% end %>
+		  <% end %>
+	    </ul>
+
+		<% for ii in 0..letras.size-1  %>
+			<% ll = letras[ii].chr %>
+			<div id="tabs2-<%= letras[ii].chr -%>">
+				
+				<% @empresas = Bazarcms::Empresa.where('upper(substr(nombre,1,1)) = ?', [ letras[ii].chr ]).order('nombre desc')%>
+				<div id="listadoempresas<%= ll -%>">
+				
+				<% for empre in @empresas %>
+					<%= link_to(empre.nombre, empre.url) %> <a href="#" onclick="$('#listadoempresas<%= ll -%>').hide();$('#datos<%= ll -%>').load('/bazarcms/empresas/show2/<%= empre.id -%>');$('#datosempresas<%= ll -%>').show();"> <%= image_tag('lupa.png') -%> </a><br/>
+				<% end %>
+				
+				</div>
+				<div id="datosempresas<%= ll -%>" style="display:none">
+					<a href="#" onclick="$('#listadoempresas<%= ll -%>').show(); $('#datosempresas<%= ll -%>').hide();">Cerrar Información</a><br/><br/>
+					<div id="datos<%= ll -%>">
+					</div>
+				</div>
+			</div>
+	    <% end %>
+			
+		  </div>	
+		</div>
+		
+		<script>
+			$(function() {
+				$( "#tabs2" ).tabs({ selected: 0 });
+			});
+		</script>
+		
+	</div>
+	
+	
+	<div id="tabs-4">
+
+		<div id="tab4">
+		
+			<b>Total Empresas:</b> <%= Bazarcms::Empresa.count_by_sql("select count(*) from empresas") %> <br/>
+			<b>Total Consultas Realizadas:</b> <%= Bazarcms::Empresasconsulta.count_by_sql("select count(*) from empresasconsultas") %> <br/>
+			<br/>
+			<table>
+			<tr>
+				<td width="200px">
+			<b>Nuevas Empresas:</b> <br/>
+
+			<% for empre in @ultimas %>
+				<%= link_to(empre.nombre, empre.url) %> <a href="#" onclick="$('#tab4').hide();$('#conte4datos').load('/bazarcms/empresas/show2/<%= empre.id -%>');$('#conte4').show();"> <%= image_tag('lupa.png') -%> </a><br/>
+			<% end %>
+				</td>
+				<td width="200px">
+			<b>Empresas Actualizadas:</b> <br/>
+
+			<% for empre in @actualizadas %>
+			<%= link_to(empre.nombre, empre.url) %> <a href="#" onclick="$('#tab4').hide();$('#conte4datos').load('/bazarcms/empresas/show2/<%= empre.id -%>');$('#conte4').show();"> <%= image_tag('lupa.png') -%> </a><br/>
+			<% end %>
+				</td>
+			</tr>
+		</table>
+		</div>
+	
+		<div id="conte4" style="display: none">
+			<a href="#" onclick="$('#tab4').show(); $('#conte4').hide();">Cerrar Información</a><br/><br/>
+			<div id="conte4datos">
+			</div>
+		</div>
+	
+	</div>
+
+	<div id="tabs-5">
+		<br/>
+		Estamos en Beta pero ya puedes darte de alta y empezar a usar este Bazar. Todos los días vamos incorporando nuevas funcionalidades. 
+		<br/><br/>
+		¿Quieres ser de los primeros? Envíanos un correo a: info (arroba) garumfundatio.org 
+		<br/><br/>
+		
+	</div>
+	
+	
+	<div id="tabs-6">
+	
+	</div>	
+	
+</div>
+
+</div>

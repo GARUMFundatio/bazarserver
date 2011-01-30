@@ -5,8 +5,8 @@
 }
 
 #header {     
-	color: #FBD600;           
-    background-color: #810E13;
+	color: #FDD900;           
+    background-color: #30537A;
     border-top-right-radius: 1em;
     border-top-left-radius: 1em;
     -moz-border-radius-topright: 1em;
@@ -44,8 +44,8 @@
 
 #footer {
     border-top: 1px solid black;
-    color: #FBD600;
-    background-color: #810E13;
+    color: #FDD900;
+    background-color: #30537A;
     border-bottom-right-radius: 1em;
     border-bottom-left-radius: 1em;
     -moz-border-radius-bottomright: 1em;
@@ -131,11 +131,6 @@ form > div > label {
     font-size: 13px !important;    
 }
 
-form label:hover {
-    cursor: pointer;
-    color: #5990B9;
-}
-
 #maxConcepts {
     width: 180px;
     background-color: white;
@@ -187,7 +182,7 @@ select {
 }
 #sidebar ul h3 {
   margin-top: 25px;
-  font-size: 16px;
+  font-size: 13px;
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
 }
@@ -195,7 +190,7 @@ select {
   list-style-type: none;
 }
 #sidebar ul.links li {
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 table.tabla {
@@ -204,8 +199,8 @@ table.tabla {
 }
 
 table.tabla th {
-    background: #810E13;
-    color: #FBD600;
+    background: #30537A;
+    color: #FDD900;
 }
 
 table.tabla tr {
@@ -217,10 +212,6 @@ table.tabla td {
 	text-align: left;
 }
 
-table.tabla tr:hover {
-    border: 1px solid green;
-}
-
 .datostd {
 	text-align: right;
 }
@@ -230,17 +221,17 @@ ul.tabs {
 	padding: 0;
 	float: left;
 	list-style: none;
-	height: 32px; /*--Set height of tabs--*/
+	height: 30px; /*--Set height of tabs--*/
 	border-bottom: 1px solid #999;
 	border-left: 1px solid #999;
-	width: 650px;
+	width: 645px;
 }
 ul.tabs li {
 	float: left;
 	margin: 0;
 	padding: 0;
-	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
-	line-height: 31px; /*--Vertically aligns the text within the tab--*/
+	height: 28px; /*--Subtract 1px from the height of the unordered list--*/
+	line-height: 28px; /*--Vertically aligns the text within the tab--*/
 	border: 1px solid #999;
 	border-left: none;
 	margin-bottom: -1px; /*--Pull the list item down 1px--*/
@@ -253,18 +244,10 @@ ul.tabs li a {
 	color: #000;
 	display: block;
 	font-size: 1em;
-	padding: 0 10px;
+	padding: 0 5px;
 	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
 	outline: none;
 }
-ul.tabs li a:hover {
-	background: #ccc;
-}
-html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
-	background: #fff;
-	border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
-}
-
 .tab_container {
 	border: 1px solid #999;
 	border-top: none;
@@ -274,7 +257,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	background: #fff;
 }
 .tab_content {
-	padding: 8px;
+	padding: 4px;
 	font-size: 1.2em;
 }
 
