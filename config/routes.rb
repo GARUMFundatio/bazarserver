@@ -4,6 +4,7 @@ Bazarserver::Application.routes.draw do
   resources :clusters
   resources :gruposconfs
   resources :confs
+  resources :noticias
   
   root :to => 'home#index'
 
