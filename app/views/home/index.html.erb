@@ -54,12 +54,12 @@
 		  <ul>
 		  <% letras = "" %>
 		  <% ultima = "" %>
-		  <% @empresas = Bazarcms::Empresa.where("1 = 1").order("nombre asc")  %>
-		  <% for empre in @empresas %>
-			  <% if ultima != empre.nombre[0].chr.upcase %>
-			    <% ultima = empre.nombre[0].chr.upcase %>
+		  <% @clusters = Cluster.where("1 = 1").order("nombre asc")  %>
+		  <% for cluster in @clusters %>
+			  <% if ultima != cluster.nombre[0].chr.upcase %>
+			    <% ultima = cluster.nombre[0].chr.upcase %>
 				<% letras += ultima %>
-				<li><a href="#tabs2-<%= empre.nombre[0].chr.upcase -%>"><%= empre.nombre[0].chr.upcase -%></a></li>
+				<li><a href="#tabs2-<%= cluster.nombre[0].chr.upcase -%>"><%= cluster.nombre[0].chr.upcase -%></a></li>
 		    <% end %>
 		  <% end %>
 	    </ul>
@@ -68,11 +68,11 @@
 			<% ll = letras[ii].chr %>
 			<div id="tabs2-<%= letras[ii].chr -%>">
 				
-				<% @empresas = Bazarcms::Empresa.where('upper(substr(nombre,1,1)) = ?', [ letras[ii].chr ]).order('nombre desc')%>
+				<% @clusters = Cluster.where('upper(substr(nombre,1,1)) = ?', [ letras[ii].chr ]).order('nombre desc')%>
 				<div id="listadoempresas<%= ll -%>">
 				
-				<% for empre in @empresas %>
-					<%= link_to(empre.nombre, empre.url) %> <a href="#" onclick="$('#listadoempresas<%= ll -%>').hide();$('#datos<%= ll -%>').load('/bazarcms/empresas/show2/<%= empre.id -%>');$('#datosempresas<%= ll -%>').show();"> <%= image_tag('lupa.png') -%> </a><br/>
+				<% for cluster in @clusters %>
+					<%= link_to(cluster.nombre, cluster.url) %> <a href="#" onclick="$('#listadoempresas<%= ll -%>').hide();$('#datos<%= ll -%>').load('/bazarcms/empresas/show2/<%= empre.id -%>');$('#datosempresas<%= ll -%>').show();"> <%= image_tag('lupa.png') -%> </a><br/>
 				<% end %>
 				
 				</div>
