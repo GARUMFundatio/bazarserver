@@ -54,23 +54,29 @@
 		            </ul>
 		          </li>	
 
+		<% if current_user.nil? %>
 	          <li>
 
 	            <h3>Administración</h3>
 	
 	            <ul class="links">
+				  <li><%= link_to "Noticias", noticias_path %> </li>
 				  <li><%= link_to "Configuración del Sistema", confs_path %> </li>
 				  <li><%= link_to "Gestión Bazares", clusters_path %> </li>
+				  <li></li>
 	            </ul>
 
 	          </li>
+		<% end %>
 
+				<li>
+		            <h3>RSS</h3>
+		            <ul class="links">
+					  <li><%= image_tag('feed.png')-%> <%= link_to("Noticias", "/noticias.rss") -%></li>
+		            </ul>
+				</li>
 
-	            <h3>Bienvenido a Bazar</h3>
-	            <ul class="links">
-	                <li><a href="http://api.rubyonrails.org/">Que es Bazar</a></li>
-	            </ul>
-
+		
 	         </li>
 
 	        </ul>
