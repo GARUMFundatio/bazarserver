@@ -45,7 +45,7 @@
 		              
 							<% if !current_user.nil? %>
 								<li>
-								<% link_to current_user.email,  "/usuarios/secret" %>
+								<%= link_to current_user.email,  "/usuarios/secret" %>
 								<%= link_to(image_tag('logout.png'),  "/usuarios/logout") %>
 								</li>
 
