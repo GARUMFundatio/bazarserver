@@ -3,15 +3,15 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title BZ_param("Titular")+": Noticias"
     xml.description BZ_param("Subtitular")
-    xml.link "directorio.garumfundatio.org"
+    xml.link "http://directorio.garumfundatio.org/"
 
     for noticia in @noticias
       xml.item do
         xml.title noticia.titulo
         xml.description noticia.texto
         xml.pubDate noticia.fecha.to_s(:rfc822)
-        xml.link "directorio.garumfundatio.org"
-        xml.guid "directorio.garumfundatio.org"
+        xml.link "http://directorio.garumfundatio.org/"
+        xml.guid "http://directorio.garumfundatio.org/"
       end
     end
   end
