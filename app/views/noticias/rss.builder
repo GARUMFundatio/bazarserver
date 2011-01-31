@@ -10,8 +10,8 @@ xml.rss :version => "2.0" do
         xml.title noticia.titulo
         xml.description noticia.texto
         xml.pubDate noticia.fecha.to_s(:rfc822)
-        xml.link Cluster.find(BZ_param("BazarId")).url
-        xml.guid Cluster.find(BZ_param("BazarId")).url
+        xml.link "directorio.garumfundatio.org"
+        xml.guid "directorio.garumfundatio.org"
       end
     end
   end
