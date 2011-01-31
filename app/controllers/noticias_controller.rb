@@ -12,11 +12,8 @@ class NoticiasController < ApplicationController
     @noticias = Noticia.where("1 = 1").order("fecha desc").paginate(:page => params[:page], :per_page => 15)
 
     respond_to do |format|
-      if current_user_is_admin || current_user_is_dinamizador
         format.html # index.html.erb
         format.xml { render :xml => @noticias }
-      else 
-        redirect_to("/home")
       end 
     end
     
@@ -46,12 +43,8 @@ class NoticiasController < ApplicationController
     @noticia.visible = 1
     @noticia.fecha = DateTime.now
     respond_to do |format|
-      if current_user_is_admin || current_user_is_dinamizador
         format.html # index.html.erb
         format.xml { render :xml => @noticias }
-      else 
-        redirect_to("/home")
-      end 
     end
 
   end
@@ -69,18 +62,13 @@ class NoticiasController < ApplicationController
     params[:noticia][:fecha]="#{f[2]}-#{f[1]}-#{f[0]}"
     
     respond_to do |format|
-      if current_user_is_admin || current_user_is_dinamizador
         if @noticia.save
           format.html { redirect_to(noticias_path) }
           format.xml  { render :xml => @noticia, :status => :created, :location => @noticia }
         else
           format.html { render :action => "new" }
           format.xml  { render :xml => @noticia.errors, :status => :unprocessable_entity }
-        end
-      else 
-        redirect_to("/home")       
-      end
-    
+        end    
     end
   end
 
@@ -94,7 +82,6 @@ class NoticiasController < ApplicationController
     # @noticia.fecha = params[:fecha]
     
     respond_to do |format|
-      if current_user_is_admin || current_user_is_dinamizador
         if @noticia.update_attributes(params[:noticia])
           format.html { redirect_to(noticias_path) }
           format.xml  { head :ok }
@@ -102,9 +89,6 @@ class NoticiasController < ApplicationController
           format.html { render :action => "edit" }
           format.xml  { render :xml => @noticia.errors, :status => :unprocessable_entity }
         end
-      else
-        redirect_to("/home")
-      end
     end
   end
 
@@ -114,14 +98,9 @@ class NoticiasController < ApplicationController
     @noticia = Noticia.find(params[:id])
     @noticia.destroy
 
-    respond_to do |format|
-      if current_user_is_admin || current_user_is_dinamizador
-      
-        format.html { redirect_to(noticias_url) }
-        format.xml  { head :ok }
-      else
-        redirect_to("/home") 
-      end
+    respond_to do |format|      
+      format.html { redirect_to(noticias_url) }
+      format.xml  { head :ok }
     end
   end
 end
