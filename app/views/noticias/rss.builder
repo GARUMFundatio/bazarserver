@@ -3,7 +3,7 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title BZ_param("Titular")+": Noticias"
     xml.description BZ_param("Subtitular")
-    xml.link Cluster.find(BZ_param("BazarId")).url
+    xml.link "directorio.garumfundatio.org"
 
     for noticia in @noticias
       xml.item do
