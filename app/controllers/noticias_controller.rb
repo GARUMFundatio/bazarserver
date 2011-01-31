@@ -2,8 +2,7 @@ require "rexml/document"
 
 class NoticiasController < ApplicationController
   
-  before_filter :require_no_user, :only => [:rss]
-  before_filter :require_user, :only => [:index,:show,:edit,:create,:update, :destroy]
+  before_filter :authenticate_user!, :except => [:rss]
   
   # GET /noticias
   # GET /noticias.xml
