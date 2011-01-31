@@ -1,3 +1,4 @@
 Bazar Server es el servidor central de directorios
 
-*
+* Nueva homepage que incluye noticias y directorios
+* Incluido validación de usuarios con devise
