@@ -45,8 +45,7 @@
 		              
 							<% if !current_user.nil? %>
 								<li>
-								<%= current_user.inspect %>
-								<% # link_to current_user.login,  edit_user_path(current_user.id) %>
+								<% link_to current_user.email,  edit_user_path(current_user.email) %>
 								<%= link_to(image_tag('logout.png'),  "/usuarios/logout") %>
 								</li>
 
