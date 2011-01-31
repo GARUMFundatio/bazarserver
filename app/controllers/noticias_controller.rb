@@ -12,10 +12,9 @@ class NoticiasController < ApplicationController
     @noticias = Noticia.where("1 = 1").order("fecha desc").paginate(:page => params[:page], :per_page => 15)
 
     respond_to do |format|
-        format.html # index.html.erb
-        format.xml { render :xml => @noticias }
-      end 
-    end
+      format.html # index.html.erb
+      format.xml { render :xml => @noticias }
+    end 
     
   end
 
@@ -32,7 +31,6 @@ class NoticiasController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @noticia }
-      
     end
   end
 
@@ -43,8 +41,8 @@ class NoticiasController < ApplicationController
     @noticia.visible = 1
     @noticia.fecha = DateTime.now
     respond_to do |format|
-        format.html # index.html.erb
-        format.xml { render :xml => @noticias }
+      format.html # index.html.erb
+      format.xml { render :xml => @noticias }
     end
 
   end
@@ -62,13 +60,13 @@ class NoticiasController < ApplicationController
     params[:noticia][:fecha]="#{f[2]}-#{f[1]}-#{f[0]}"
     
     respond_to do |format|
-        if @noticia.save
-          format.html { redirect_to(noticias_path) }
-          format.xml  { render :xml => @noticia, :status => :created, :location => @noticia }
-        else
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @noticia.errors, :status => :unprocessable_entity }
-        end    
+      if @noticia.save
+        format.html { redirect_to(noticias_path) }
+        format.xml  { render :xml => @noticia, :status => :created, :location => @noticia }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @noticia.errors, :status => :unprocessable_entity }
+      end    
     end
   end
 
@@ -82,13 +80,13 @@ class NoticiasController < ApplicationController
     # @noticia.fecha = params[:fecha]
     
     respond_to do |format|
-        if @noticia.update_attributes(params[:noticia])
-          format.html { redirect_to(noticias_path) }
-          format.xml  { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @noticia.errors, :status => :unprocessable_entity }
-        end
+      if @noticia.update_attributes(params[:noticia])
+        format.html { redirect_to(noticias_path) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @noticia.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
