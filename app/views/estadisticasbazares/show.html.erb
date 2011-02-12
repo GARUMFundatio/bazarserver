@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @estadisticasbazar.fecha %>
+</p>
+
+<p>
+  <b>Bazar:</b>
+  <%= @estadisticasbazar.bazar_id %>
+</p>
+
+<p>
+  <b>Empresas:</b>
+  <%= @estadisticasbazar.empresas %>
+</p>
+
+<p>
+  <b>Consultas:</b>
+  <%= @estadisticasbazar.consultas %>
+</p>
+
+<p>
+  <b>Clustersactivos:</b>
+  <%= @estadisticasbazar.clustersactivos %>
+</p>
+
+
+<%= link_to 'Edit', edit_estadisticasbazar_path(@estadisticasbazar) %> |
+<%= link_to 'Back', estadisticasbazares_path %>

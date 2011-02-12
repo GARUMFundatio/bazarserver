@@ -1,10 +1,10 @@
-<%= form_for(@estdadisticasbazar) do |f| %>
-  <% if @estdadisticasbazar.errors.any? %>
+<%= form_for(@estadisticasbazar) do |f| %>
+  <% if @estadisticasbazar.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@estdadisticasbazar.errors.count, "error") %> prohibited this estdadisticasbazar from being saved:</h2>
+      <h2><%= pluralize(@estadisticasbazar.errors.count, "error") %> prohibited this estadisticasbazar from being saved:</h2>
 
       <ul>
-      <% @estdadisticasbazar.errors.full_messages.each do |msg| %>
+      <% @estadisticasbazar.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

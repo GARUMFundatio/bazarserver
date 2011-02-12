@@ -1,6 +1,6 @@
 Bazarserver::Application.routes.draw do
   
-  resources :estdadisticasbazares
+  resources :estadisticasbazares
 
   root :to => 'home#index'
   match '/noticias.rss' => 'noticias#rss'
