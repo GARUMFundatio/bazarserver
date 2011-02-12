@@ -85,6 +85,10 @@ namespace :bazar do
          datos = JSON.parse(res.body)
 
          puts "#{datos.inspect} <----------- datos empresas"
+         
+         for dat in datos 
+           puts dat[:nombre]
+         end 
              
       else
          puts "ERROR en la petición a #{uri}---------->"+res.error!
