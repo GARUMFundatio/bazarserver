@@ -43,9 +43,10 @@ namespace :bazar do
          
          bazar = Estadisticasbazar.where('bazar_id = ? and fecha = ?', cluster.id, DateTime.now.strftime("%Y-%m-%d") )
          if (bazar.nil?)
-            bazar = Estadisticasbazar.new
-            bazar.fecha = DateTime.now.strftime("%Y-%m-%d")
-            bazar.bazar_id = cluster.id
+           puts "No existe lo creo"
+           bazar = Estadisticasbazar.new
+           bazar.fecha = DateTime.now.strftime("%Y-%m-%d")
+           bazar.bazar_id = cluster.id
          end 
          
          bazar.empresas = datos['empresas']
@@ -53,7 +54,7 @@ namespace :bazar do
          bazar.clustersactivos = datos['clustersactivos']
          
          bazar.save
-           
+         puts "grabada la info en estadisticas"  
        else
          puts "ERROR en la petición a #{uri}---------->"+res.error!
        end       
