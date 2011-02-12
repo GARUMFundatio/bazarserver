@@ -32,17 +32,17 @@ namespace :bazar do
        when Net::HTTPSuccess, Net::HTTPRedirection
          datos = JSON.parse(res.body)
 
-         logger.debug "#{datos.inspect} <-----------"
+         puts "#{datos.inspect} <-----------"
          datos.each{ |key|
-             logger.debug ("#{key.inspect}")
-             logger.debug ("#{key['datos'].inspect} <------ datos")
+             puts ("#{key.inspect}")
+             puts ("#{key['datos'].inspect} <------ datos")
              }
            
        else
-         logger.debug "ERROR en la petición a #{uri}---------->"+res.error!
+         puts "ERROR en la petición a #{uri}---------->"+res.error!
        end       
        rescue Exception => e
-         logger.debug "Exception leyendo #{cluster.url} Got #{e.class}: #{e}"        
+         puts "Exception leyendo #{cluster.url} Got #{e.class}: #{e}"        
      end
        
    end 
