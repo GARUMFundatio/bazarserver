@@ -8,6 +8,7 @@ class CreateEstadisticasempresas < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index "estadisticasempresas", ["bazar_id","empresa_id"], :name => "index_estaempre_bazar"
   end
 
   def self.down
