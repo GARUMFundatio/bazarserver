@@ -49,7 +49,7 @@ namespace :bazar do
      # actualizamos las estadísticas de este bazar
      puts "actualizamos las estadisticas"
      bazar = Estadisticasbazar.where('bazar_id = ? and fecha = ?', cluster.id, DateTime.now.strftime("%Y-%m-%d"))
-     if (bazar.nil?)
+     if (bazar?)
        puts "No existe lo creo"
        bazar = Estadisticasbazar.new
        bazar.fecha = DateTime.now.strftime("%Y-%m-%d")
