@@ -87,8 +87,22 @@ namespace :bazar do
          puts "#{datos.inspect} <----------- datos empresas"
          
          for dat in datos 
-           puts dat.inspect
-           puts dat['nombre']
+            empresa = Estadisticasempresa.find_by_bazar_id_and_empresa_id(cluster.id, dat['id'])
+            puts "empresa #{empresa.inspect}"
+            if (empresa.nil?)
+              puts "No existe lo creo"
+              empresa = Estadisticasempresa.new
+              empresa.empresa_id = dat['id']
+              empresa.bazar_id = cluster.id
+            end 
+
+            empresa.fundada = dat['fundada']
+            empresa.consultas = dat['consultas']
+            empresa.nombre = dat['nombre']
+            empresa.url = dat['url']
+
+            empresa.save
+            
          end 
              
       else
