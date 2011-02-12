@@ -103,7 +103,7 @@
 			<b>Total Directorios:</b> <%= Cluster.count_by_sql("select count(*) from clusters") %> <br/>
 			<b>Total Consultas Realizadas:</b> <%= Estadisticasbazar.count_by_sql("select sum(consultas) from estadisticasbazares  group by fecha order by fecha desc limit 1;") %> <br/>
 			<br/>
-			<table>
+			<table class="tabla">
 			<tr>
 				<td width="200px">
 			<b>Nuevos Bazares:</b> <br/>
@@ -119,6 +119,17 @@
 			<%= link_to(cluster.nombre, cluster.url) %> <a href="#" onclick="$('#tab4').hide();$('#conte4datos').load('/bazarcms/empresas/show2/<%= cluster.id -%>');$('#conte4').show();"> <%= image_tag('lupa.png') -%> </a><br/>
 			<% end %>
 				</td>
+			</tr>
+
+			<tr>
+				<td width="200px">
+			<b>Empresas con más actividad:</b> <br/>
+
+			<% for empresa in Estadisticasempresa.where("1 = 1").order("consultas desc").limit(10) %>
+				<%= link_to(empresa.nombre, empresa.url) %> <br/>
+			<% end %>
+			</td>
+
 			</tr>
 		</table>
 		</div>
