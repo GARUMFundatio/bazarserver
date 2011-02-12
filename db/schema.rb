@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101229135955) do
+ActiveRecord::Schema.define(:version => 20110212095024) do
 
   create_table "clusters", :force => true do |t|
     t.string   "nombre"
@@ -30,6 +30,29 @@ ActiveRecord::Schema.define(:version => 20101229135955) do
     t.string   "tipo"
     t.string   "valor"
     t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "estadisticasbazares", :force => true do |t|
+    t.date     "fecha"
+    t.integer  "bazar_id"
+    t.integer  "empresas"
+    t.integer  "consultas"
+    t.integer  "clustersactivos"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "estadisticasbazares", ["bazar_id", "fecha"], :name => "index_estabazar_bazar"
+  add_index "estadisticasbazares", ["fecha", "bazar_id"], :name => "index_estabazar_fecha"
+
+  create_table "estdadisticasbazares", :force => true do |t|
+    t.date     "fecha"
+    t.integer  "bazar_id"
+    t.integer  "empresas"
+    t.integer  "consultas"
+    t.integer  "clustersactivos"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
