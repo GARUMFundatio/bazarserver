@@ -24,7 +24,7 @@ namespace :bazar do
      request = Net::HTTP::Get.new(uri.request_uri)
      request.body = post_body.join
      request["Content-Type"] = "text/plain"
-     
+     datos = ""
      begin 
          
        res =  Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
@@ -39,28 +39,30 @@ namespace :bazar do
          cluster.empresas = datos['empresas']
          cluster.save
          
-         # actualizamos las estadísticas de este bazar
-         puts "actualizamos las estadisticas"
-         bazar = Estadisticasbazar.where('bazar_id = ? and fecha = ?', cluster.id, DateTime.now.strftime("%Y-%m-%d"))
-         if (bazar.nil?)
-           puts "No existe lo creo"
-           bazar = Estadisticasbazar.new
-           bazar.fecha = DateTime.now.strftime("%Y-%m-%d")
-           bazar.bazar_id = cluster.id
-         end 
-         
-         bazar.empresas = datos['empresas']
-         bazar.consultas = datos['consultas']
-         bazar.clustersactivos = datos['clustersactivos']
-         
-         bazar.save
-         puts "grabada la info en estadisticas"  
-       else
+      else
          puts "ERROR en la petición a #{uri}---------->"+res.error!
        end       
        rescue Exception => e
          puts "Exception leyendo #{cluster.url} Got #{e.class}: #{e}"        
      end
+     
+     # actualizamos las estadísticas de este bazar
+     puts "actualizamos las estadisticas"
+     bazar = Estadisticasbazar.where('bazar_id = ? and fecha = ?', cluster.id, DateTime.now.strftime("%Y-%m-%d"))
+     if (bazar.nil?)
+       puts "No existe lo creo"
+       bazar = Estadisticasbazar.new
+       bazar.fecha = DateTime.now.strftime("%Y-%m-%d")
+       bazar.bazar_id = cluster.id
+     end 
+     
+     bazar.empresas = datos['empresas']
+     bazar.consultas = datos['consultas']
+     bazar.clustersactivos = datos['clustersactivos']
+     
+     bazar.save
+     puts "grabada la info en estadisticas"  
+       
        
    end 
  end
