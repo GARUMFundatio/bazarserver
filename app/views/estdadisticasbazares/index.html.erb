@@ -1,0 +1,31 @@
+<h1>Listing estdadisticasbazares</h1>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Bazar</th>
+    <th>Empresas</th>
+    <th>Consultas</th>
+    <th>Clustersactivos</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @estdadisticasbazares.each do |estdadisticasbazar| %>
+  <tr>
+    <td><%= estdadisticasbazar.fecha %></td>
+    <td><%= estdadisticasbazar.bazar_id %></td>
+    <td><%= estdadisticasbazar.empresas %></td>
+    <td><%= estdadisticasbazar.consultas %></td>
+    <td><%= estdadisticasbazar.clustersactivos %></td>
+    <td><%= link_to 'Show', estdadisticasbazar %></td>
+    <td><%= link_to 'Edit', edit_estdadisticasbazar_path(estdadisticasbazar) %></td>
+    <td><%= link_to 'Destroy', estdadisticasbazar, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Estdadisticasbazar', new_estdadisticasbazar_path %>

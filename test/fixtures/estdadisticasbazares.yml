@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  fecha: 2011-02-12
+  bazar_id: 1
+  empresas: 1
+  consultas: 1
+  clustersactivos: 1
+
+two:
+  fecha: 2011-02-12
+  bazar_id: 1
+  empresas: 1
+  consultas: 1
+  clustersactivos: 1

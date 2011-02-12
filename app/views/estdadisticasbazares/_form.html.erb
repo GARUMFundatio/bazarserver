@@ -1,0 +1,37 @@
+<%= form_for(@estdadisticasbazar) do |f| %>
+  <% if @estdadisticasbazar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estdadisticasbazar.errors.count, "error") %> prohibited this estdadisticasbazar from being saved:</h2>
+
+      <ul>
+      <% @estdadisticasbazar.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha %><br />
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :bazar_id %><br />
+    <%= f.text_field :bazar_id %>
+  </div>
+  <div class="field">
+    <%= f.label :empresas %><br />
+    <%= f.text_field :empresas %>
+  </div>
+  <div class="field">
+    <%= f.label :consultas %><br />
+    <%= f.text_field :consultas %>
+  </div>
+  <div class="field">
+    <%= f.label :clustersactivos %><br />
+    <%= f.text_field :clustersactivos %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
