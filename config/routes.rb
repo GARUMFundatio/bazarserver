@@ -16,5 +16,6 @@ Bazarserver::Application.routes.draw do
   match 'logout' => "devise/sessions#destroy", :as => :logout
   match 'home' => "home#index"
   match '/clusters/activar/:id' => 'clusters#activar', :constrants => { :id => /\d+/ }, :as => :activar_cluster
+  match '/clusters/show2/:id' => 'clusters#show2', :constrants => { :id => /\d+/ }
 
 end
