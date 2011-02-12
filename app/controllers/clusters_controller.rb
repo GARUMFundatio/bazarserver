@@ -21,6 +21,15 @@ class ClustersController < ApplicationController
     end
   end
 
+  def show2
+    @cluster = Cluster.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
+  end
+  
+
   def new
     @cluster = Cluster.new
 
