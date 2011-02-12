@@ -17,7 +17,6 @@ namespace :bazar do
      post_body = []
      post_body << "Content-Type: text/plain\r\n"
   
-       
      http = Net::HTTP.new(uri.host, uri.port)
      http.open_timeout = http.read_timeout = 10
        
@@ -64,24 +63,40 @@ namespace :bazar do
      
      bazar.save
 
-     empresa = Estadisticasempresa.find_by_bazar_id_and_empresa_id(cluster.id, DateTime.now.strftime("%Y-%m-%d"))
-     puts "bazar #{bazar.inspect}"
-     if (bazar.nil?)
-       puts "No existe lo creo"
-       bazar = Estadisticasbazar.new
-       bazar.fecha = DateTime.now.strftime("%Y-%m-%d")
-       bazar.bazar_id = cluster.id
+     # por cada uno de los bazares obtenemos la lista de empresas. 
+
+     uri = URI.parse("#{cluster.url}/api/empresas.json")
+
+     post_body = []
+     post_body << "Content-Type: text/plain\r\n"
+  
+     http = Net::HTTP.new(uri.host, uri.port)
+     http.open_timeout = http.read_timeout = 20
+       
+     request = Net::HTTP::Get.new(uri.request_uri)
+     request.body = post_body.join
+     request["Content-Type"] = "text/plain"
+     datos = ""
+     begin 
+         
+       res =  Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
+       case res
+       when Net::HTTPSuccess, Net::HTTPRedirection
+         datos = JSON.parse(res.body)
+
+         puts "#{datos.inspect} <----------- datos empresas"
+         
+         
+      else
+         puts "ERROR en la petición a #{uri}---------->"+res.error!
+       end       
+       rescue Exception => e
+         puts "Exception leyendo #{cluster.url} Got #{e.class}: #{e}"        
+     end
+     
      end 
+   end
      
-     bazar.empresas = datos['empresas']
-     bazar.consultas = datos['consultas']
-     bazar.clustersactivos = datos['clustersactivos']
-     
-     bazar.save
-       
-       
-   end 
- end
        
        
    end 
