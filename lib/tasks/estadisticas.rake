@@ -33,12 +33,11 @@ namespace :bazar do
          datos = JSON.parse(res.body)
 
          puts "#{datos.inspect} <-----------"
-         datos.each{ |key|
-             puts ("#{key.inspect}")
-             puts ("#{key['datos'].inspect} <------ datos")
-             cluster.empresas = key['datos']['empresas'].to_i
-             cluster.save
-             }
+         
+         # actualizamos la información del cluster 
+         
+         cluster.empresas = datos['empresas']
+         cluster.save
            
        else
          puts "ERROR en la petición a #{uri}---------->"+res.error!
