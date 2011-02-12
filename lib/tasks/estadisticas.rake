@@ -38,6 +38,21 @@ namespace :bazar do
          
          cluster.empresas = datos['empresas']
          cluster.save
+         
+         # actualizamos las estadísticas de este bazar
+         
+         bazar = Estadisticasbazar.where('bazar_id = ? and fecha = ?', cluster.id, DateTime.now.strftime("%Y-%m-%d") )
+         if (bazar.nil?)
+            bazar = Estadisticasbazar.new
+            bazar.fecha = DateTime.now.strftime("%Y-%m-%d")
+            bazar.bazar_id = cluster.id
+         end 
+         
+         bazar.empresas = datos['empresas']
+         bazar.consultas = datos['consultas']
+         bazar.clustersactivos = datos['clustersactivos']
+         
+         bazar.save
            
        else
          puts "ERROR en la petición a #{uri}---------->"+res.error!
