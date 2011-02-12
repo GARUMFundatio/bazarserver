@@ -136,13 +136,14 @@
 		<br/>
 		
 		<div class="jqPlot" id="chart3" style="height:360px; width:540px;"></div> 
-		<%= Estadisticasbazar.select("fecha, sum(consultas) as suma").group("fecha").order("fecha").inspect %>
+		<%= Estadisticasbazar.select("fecha").select("SUM(consultas) as suma").group("fecha").order("fecha").inspect %>
+		
 		<script>
 		
 		$.jqplot.config.enablePlugins = true;
 		line1=[[1,1], [1.5, 2.25], [2,4], [2.5,6.25], [3,9], [3.5,12.25], [4,16]];
 		line1 = [];
-		<% for data in Estadisticasbazar.select("fecha").group("fecha").order("fecha").sum("consultas") %>
+		<% for data in Estadisticasbazar.select("fecha").group("fecha").order("fecha") %>
 			<%= data.inspect %>
 			line1 << [ <%= data.fecha -%>, <%= data[1] -%>];
 		<% end %>
