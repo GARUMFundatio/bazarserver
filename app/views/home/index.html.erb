@@ -101,7 +101,7 @@
 		<div id="tab4">
 		
 			<b>Total Directorios:</b> <%= Cluster.count_by_sql("select count(*) from clusters") %> <br/>
-			<b>Total Consultas Realizadas:</b> <br/>
+			<b>Total Consultas Realizadas:</b> <%= Estadisticasbazar.count_by_sql("select sum(consultas) from estadisticasbazares  group by fecha order by fecha desc limit 1;") %> <br/>
 			<br/>
 			<table>
 			<tr>
