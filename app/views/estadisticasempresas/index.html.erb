@@ -1,0 +1,29 @@
+<h1>Listing estadisticasempresas</h1>
+
+<table>
+  <tr>
+    <th>Empresa</th>
+    <th>Bazar</th>
+    <th>Consultas</th>
+    <th>Fundada</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @estadisticasempresas.each do |estadisticasempresa| %>
+  <tr>
+    <td><%= estadisticasempresa.empresa_id %></td>
+    <td><%= estadisticasempresa.bazar_id %></td>
+    <td><%= estadisticasempresa.consultas %></td>
+    <td><%= estadisticasempresa.fundada %></td>
+    <td><%= link_to 'Show', estadisticasempresa %></td>
+    <td><%= link_to 'Edit', edit_estadisticasempresa_path(estadisticasempresa) %></td>
+    <td><%= link_to 'Destroy', estadisticasempresa, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Estadisticasempresa', new_estadisticasempresa_path %>

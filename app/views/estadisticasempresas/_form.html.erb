@@ -1,0 +1,33 @@
+<%= form_for(@estadisticasempresa) do |f| %>
+  <% if @estadisticasempresa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estadisticasempresa.errors.count, "error") %> prohibited this estadisticasempresa from being saved:</h2>
+
+      <ul>
+      <% @estadisticasempresa.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :empresa_id %><br />
+    <%= f.text_field :empresa_id %>
+  </div>
+  <div class="field">
+    <%= f.label :bazar_id %><br />
+    <%= f.text_field :bazar_id %>
+  </div>
+  <div class="field">
+    <%= f.label :consultas %><br />
+    <%= f.text_field :consultas %>
+  </div>
+  <div class="field">
+    <%= f.label :fundada %><br />
+    <%= f.text_field :fundada %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

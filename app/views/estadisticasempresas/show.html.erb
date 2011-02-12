@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Empresa:</b>
+  <%= @estadisticasempresa.empresa_id %>
+</p>
+
+<p>
+  <b>Bazar:</b>
+  <%= @estadisticasempresa.bazar_id %>
+</p>
+
+<p>
+  <b>Consultas:</b>
+  <%= @estadisticasempresa.consultas %>
+</p>
+
+<p>
+  <b>Fundada:</b>
+  <%= @estadisticasempresa.fundada %>
+</p>
+
+
+<%= link_to 'Edit', edit_estadisticasempresa_path(@estadisticasempresa) %> |
+<%= link_to 'Back', estadisticasempresas_path %>

@@ -21,6 +21,7 @@ inflect.irregular 'user', 'users'
 inflect.irregular 'conf', 'confs'
 inflect.irregular 'gruposconf', 'gruposconfs'
 inflect.irregular 'estadisticasbazar', 'estadisticasbazares'
+inflect.irregular 'estadisticasempresa', 'estadisticasempresas'
 
 
 end

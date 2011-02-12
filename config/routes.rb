@@ -1,5 +1,7 @@
 Bazarserver::Application.routes.draw do
   
+  resources :estadisticasempresas
+
   resources :estadisticasbazares
 
   root :to => 'home#index'

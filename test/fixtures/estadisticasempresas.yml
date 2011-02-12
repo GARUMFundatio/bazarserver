@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  empresa_id: 1
+  bazar_id: 1
+  consultas: 1
+  fundada: 1
+
+two:
+  empresa_id: 1
+  bazar_id: 1
+  consultas: 1
+  fundada: 1
