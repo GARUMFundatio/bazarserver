@@ -72,7 +72,7 @@
 				<div id="listadoempresas<%= ll -%>">
 				
 				<% for cluster in @clusters %>
-					<%= link_to(cluster.nombre, cluster.url) %> <a href="#" onclick="$('#listadoempresas<%= ll -%>').hide();$('#datos<%= ll -%>').load('/bazarcms/empresas/show2/<%= cluster.id -%>');$('#datosempresas<%= ll -%>').show();"> <%= image_tag('lupa.png') -%> </a><br/>
+					<%= link_to(cluster.nombre, cluster.url) %> <a href="#" onclick="$('#listadoempresas<%= ll -%>').hide();$('#datos<%= ll -%>').load('<%= cluster.url -%>/api/info.html');$('#datosempresas<%= ll -%>').show();"> <%= image_tag('lupa.png') -%> </a><br/>
 				<% end %>
 				
 				</div>
