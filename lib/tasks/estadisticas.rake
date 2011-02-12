@@ -87,7 +87,8 @@ namespace :bazar do
          puts "#{datos.inspect} <----------- datos empresas"
          
          for dat in datos 
-           puts dat[:nombre]
+           puts dat.inspect
+           puts dat['nombre']
          end 
              
       else
