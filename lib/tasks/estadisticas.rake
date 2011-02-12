@@ -48,6 +48,7 @@ namespace :bazar do
      
      # actualizamos las estadísticas de este bazar
      puts "actualizamos las estadisticas"
+
      bazar = Estadisticasbazar.find_by_bazar_id_and_fecha(cluster.id, DateTime.now.strftime("%Y-%m-%d"))
      puts "bazar #{bazar.inspect}"
      if (bazar.nil?)
@@ -62,7 +63,25 @@ namespace :bazar do
      bazar.clustersactivos = datos['clustersactivos']
      
      bazar.save
-     puts "grabada la info en estadisticas"  
+
+     empresa = Estadisticasempresa.find_by_bazar_id_and_empresa_id(cluster.id, DateTime.now.strftime("%Y-%m-%d"))
+     puts "bazar #{bazar.inspect}"
+     if (bazar.nil?)
+       puts "No existe lo creo"
+       bazar = Estadisticasbazar.new
+       bazar.fecha = DateTime.now.strftime("%Y-%m-%d")
+       bazar.bazar_id = cluster.id
+     end 
+     
+     bazar.empresas = datos['empresas']
+     bazar.consultas = datos['consultas']
+     bazar.clustersactivos = datos['clustersactivos']
+     
+     bazar.save
+       
+       
+   end 
+ end
        
        
    end 
