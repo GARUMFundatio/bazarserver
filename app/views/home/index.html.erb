@@ -140,11 +140,11 @@
 		<script>
 		
 		$.jqplot.config.enablePlugins = true;
-		line1=[[1,1], [1.5, 2.25], [2,4], [2.5,6.25], [3,9], [3.5,12.25], [4,16]];
-		// line1 = [];
+		//line1=[[1,1], [1.5, 2.25], [2,4], [2.5,6.25], [3,9], [3.5,12.25], [4,16]];
+		line1 = [];
 		<% for data in Estadisticasbazar.select("fecha").group("fecha").order("fecha") %>
 			
-			// line1 << [ <%= data.fecha -%>, <%= Estadisticasbazar.count_by_sql("select sum(consultas) from estadisticasbazares where fecha = '#{data.fecha}'  group by fecha order by fecha;")  -%>];
+			line1 << [ '<%= data.fecha -%>', <%= Estadisticasbazar.count_by_sql("select sum(consultas) from estadisticasbazares where fecha = '#{data.fecha}'  group by fecha order by fecha;")  -%>];
 		<% end %>
 		
 		plot3 = $.jqplot('chart3', [line1], {
