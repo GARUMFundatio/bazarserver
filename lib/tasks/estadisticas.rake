@@ -36,6 +36,8 @@ namespace :bazar do
          datos.each{ |key|
              puts ("#{key.inspect}")
              puts ("#{key['datos'].inspect} <------ datos")
+             cluster.empresas = key['datos']['empresas']
+             cluster.save
              }
            
        else
