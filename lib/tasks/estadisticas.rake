@@ -40,8 +40,8 @@ namespace :bazar do
          cluster.save
          
          # actualizamos las estadísticas de este bazar
-         
-         bazar = Estadisticasbazar.where('bazar_id = ? and fecha = ?', cluster.id, DateTime.now.strftime("%Y-%m-%d") )
+         puts "actualizamos las estadisticas"
+         bazar = Estadisticasbazar.where('bazar_id = ? and fecha = ?', cluster.id, DateTime.now.strftime("%Y-%m-%d"))
          if (bazar.nil?)
            puts "No existe lo creo"
            bazar = Estadisticasbazar.new
