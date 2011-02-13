@@ -521,7 +521,7 @@ select {
 
 /* tablas */
 
-#contenido table {
+#contenido table.base {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
@@ -534,7 +534,7 @@ table tr td {
     padding-left: 14px;
 }
 
-table tr td:first-child {
+table.base tr td:first-child {
     padding-left: 0;
 }
 
