@@ -150,7 +150,6 @@
 			ii = 0;
 			<% for data in Cluster.select("date(created_at)").where("id<>1").group("date(created_at)").order("date(created_at)") %>				
 			<%= data.inspect -%>
-				// line1[ii] = [ '<%= data.created_at.strftime("%Y-%m-%d") -%>', <%= Cluster.count_by_sql("select count(*) from clusters where date(created_at) = '#{data.created_at.strftime("%Y-%m-%d")}'  group by date(created_at) order by date(created_at);")  -%>];
 				ii++;
 			<% end %>
 
