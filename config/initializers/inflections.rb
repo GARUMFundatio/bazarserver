@@ -22,6 +22,7 @@ inflect.irregular 'conf', 'confs'
 inflect.irregular 'gruposconf', 'gruposconfs'
 inflect.irregular 'estadisticasbazar', 'estadisticasbazares'
 inflect.irregular 'estadisticasempresa', 'estadisticasempresas'
+inflect.irregular 'estadisticasconsulta', 'estadisticasconsultas'
 
 
 end

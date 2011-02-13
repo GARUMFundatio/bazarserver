@@ -53,6 +53,22 @@ class EstadisticasconsultasController < ApplicationController
     end
   end
 
+  def grabaconsulta
+    @esta = Estadisticasconsulta.new()
+    
+    @esta.fecha = Datetime.now
+    @esta.bazar_id = params[:cid]
+    @esta.consulta = CGI.unescape(params[:q])+"|"
+    @esta.consulta += CGI.unescape(params[:qe])+"|"
+    @esta.consulta += CGI.unescape(params[:qv])+"|"
+    @esta.consulta += CGI.unescape(params[:qc])+"|"
+    @esta.consulta += CGI.unescape(params[:qr])+"|"
+    @esta.consulta += CGI.unescape(params[:bid])
+    
+    @esta.save
+
+  end
+
   # PUT /estadisticasconsultas/1
   # PUT /estadisticasconsultas/1.xml
   def update
@@ -68,6 +84,7 @@ class EstadisticasconsultasController < ApplicationController
       end
     end
   end
+
 
   # DELETE /estadisticasconsultas/1
   # DELETE /estadisticasconsultas/1.xml
