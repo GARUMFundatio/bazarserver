@@ -24,18 +24,12 @@
   </head>
   <body>
 
-   <div class="container">
+    <div class="container">
 
-	  <div id="header" class="span-24 last">
-	    <div class="span-23 prepend-1">
-	      <div class="span-23 last">
-			<br/>
-		      <h1 align="center"><%= h BZ_param("Titular") %></h1>
-	          <h2 align="center"><%= h BZ_param("Subtitular") %></h2>
-			<br/>
-	      </div>
-	    </div>
-	  </div>
+        <div id="header">
+             <h1 id="title"><%= h BZ_param("Titular") %></h1>
+             <h2 id="slogan"><%= h BZ_param("Subtitular") %></h2>
+        </div>
 
 	  <div id="content" class="span-24 last">
 			<div class="body">
@@ -105,17 +99,13 @@
 
 	  </div>
 
-		<div id="footer" class="span-24 last">
-	 		<div class="span-5 append-1 append-bottom">
-	    		&nbsp;&nbsp;&nbsp;&nbsp;Garum Fundatio
-	 		</div>
-		</div> <!-- fin footer-->
-
-
+      <div id="footer">
+    		<a href="http://garumfundatio.org" style="text-decoration: none">Garum Fundatio</a>
+      </div> <!-- fin footer-->
 
   </div> <!-- fin container -->
 
-  </body>
+</body>
 </html>
 
 
