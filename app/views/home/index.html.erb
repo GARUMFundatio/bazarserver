@@ -154,13 +154,13 @@
 			<% end %>
 
 			plot3 = $.jqplot('gra01', [line1], {
-			    legend:{show:true}, 
+			    legend:{show:true, location:'nw'}, 
 			    title:'Número de Bazares',
 			
 			    axes:{
 			        xaxis:{
 			            renderer:$.jqplot.DateAxisRenderer, 
-			            tickOptions:{formatString:'%m-%Y'},
+			            tickOptions:{formatString:'%m-%y'},
 			            tickInterval:'1 month'
 			        }
 			    },
