@@ -138,6 +138,8 @@
 				</div>
 			</div>
 			
+			<br/>
+			
 			<div class="jqPlot" id="gra01" style="height:360px; width:540px;"></div> 
 
 			<script>
@@ -147,10 +149,8 @@
 			line1 = [];
 			ii = 0;
 			<% for data in Cluster.select("created_at").group("created_at").order("created_at") %>
-
-				line1[ii] = [ '<%= data.created_at.strftime("%Y-%m-%d") -%>', <%= Cluster.count_by_sql("select count(*) from clusters where created_at = '#{data.created_at}'  group by created_at order by created_at;")  -%>];
+				line1[ii] = [ '<%= data.created_at.strftime("%Y-%m-%d") -%>', <%= Cluster.count_by_sql("select count(*) from clusters where created_at = '<%= data.created_at -%>'  group by created_at order by created_at;")  -%>];
 				ii++;
-
 			<% end %>
 
 			plot3 = $.jqplot('gra01', [line1], {
