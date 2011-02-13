@@ -166,7 +166,20 @@
 			            tickInterval:'1 month'
 			        }
 			    },
-						    
+				axes:{
+			        xaxis:{
+			            renderer:$.jqplot.DateAxisRenderer,
+			            rendererOptions:{tickRenderer:$.jqplot.CanvasAxisTickRenderer},
+			            tickOptions:{
+			                formatString:'%b %#d, %Y', 
+			                fontSize:'10pt', 
+			                fontFamily:'Tahoma', 
+			                angle:-30
+			            }
+			        },
+			        yaxis:{tickOptions:{formatString:'$%.2f'}}
+			    },
+			    highlighter: {sizeAdjust: 7.5},		    
 			    series:[
 					{label:'Bazares'},
 					{label:'Empresas',yaxis:'y2axis' } 
