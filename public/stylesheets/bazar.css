@@ -521,7 +521,8 @@ select {
 
 /* tablas */
 
-#contenido table.base {
+#contenido table.base,
+table.table {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
