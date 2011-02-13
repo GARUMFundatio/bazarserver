@@ -530,6 +530,10 @@ select {
     background: white;
 }
 
+#contenido table.tabla {
+    margin-bottom: 20px;
+}
+
 
 .base tr td {
     padding-left: 14px;
