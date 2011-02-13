@@ -156,9 +156,15 @@
 			plot3 = $.jqplot('gra01', [line1], {
 			    legend:{show:true}, 
 			    title:'Número de Bazares',
-				axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
-				tickOptions:{formatString:'%m-%y'}, 
-				tickInterval:'1 month',
+			
+			    axes:{
+			        xaxis:{
+			            renderer:$.jqplot.DateAxisRenderer, 
+			            tickOptions:{formatString:'%m-%Y'},
+			            tickInterval:'1 month'
+			        }
+			    },
+			
 			    series:[
 					{label:'Bazares'} 
 			    ]
