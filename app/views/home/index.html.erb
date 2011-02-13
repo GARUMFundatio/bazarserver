@@ -143,6 +143,7 @@
 			<script>
 
 			$.jqplot.config.enablePlugins = true;
+			
 			line1 = [];
 			ii = 0;
 			<% for data in Cluster.select("created_at").group("created_at").order("created_at") %>
