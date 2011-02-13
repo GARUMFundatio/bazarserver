@@ -531,11 +531,11 @@ table.table {
     background: white;
 }
 
-table tr td {
+.base tr td {
     padding-left: 14px;
 }
 
-table.base tr td:first-child {
+.base tr td:first-child {
     padding-left: 0;
 }
 
