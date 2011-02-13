@@ -56,7 +56,7 @@ class EstadisticasconsultasController < ApplicationController
   def grabaconsulta
     @esta = Estadisticasconsulta.new()
     
-    @esta.fecha = Datetime.now
+    @esta.fecha = DateTime::now
     @esta.bazar_id = params[:cid]
     @esta.consulta = CGI.unescape(params[:q])+"|"
     @esta.consulta += CGI.unescape(params[:qe])+"|"
