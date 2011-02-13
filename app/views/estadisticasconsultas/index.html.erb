@@ -1,0 +1,27 @@
+<h1>Listing estadisticasconsultas</h1>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Bazar</th>
+    <th>Consulta</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @estadisticasconsultas.each do |estadisticasconsulta| %>
+  <tr>
+    <td><%= estadisticasconsulta.fecha %></td>
+    <td><%= estadisticasconsulta.bazar_id %></td>
+    <td><%= estadisticasconsulta.consulta %></td>
+    <td><%= link_to 'Show', estadisticasconsulta %></td>
+    <td><%= link_to 'Edit', edit_estadisticasconsulta_path(estadisticasconsulta) %></td>
+    <td><%= link_to 'Destroy', estadisticasconsulta, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Estadisticasconsulta', new_estadisticasconsulta_path %>

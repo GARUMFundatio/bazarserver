@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  fecha: 2011-02-13 11:31:07
+  bazar_id: 1
+  consulta: MyString
+
+two:
+  fecha: 2011-02-13 11:31:07
+  bazar_id: 1
+  consulta: MyString

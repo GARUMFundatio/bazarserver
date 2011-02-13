@@ -1,5 +1,7 @@
 Bazarserver::Application.routes.draw do
   
+  resources :estadisticasconsultas
+
   resources :estadisticasempresas
 
   resources :estadisticasbazares
