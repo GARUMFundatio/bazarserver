@@ -110,7 +110,7 @@
 		<div id="dash-1">
 		
 			<b>Total Bazares:</b> <%= Cluster.count_by_sql("select count(*) from clusters") %> <br/>
-			<b>Total Empresas:</b> <%= Estadisticasconsulta.count_by_sql("select count(*) from estadisticasconsultas ;") %> <br/>
+			<b>Total Empresas:</b> <%= Cluster.count_by_sql("select sum(empresas) from clusters") %> <br/>
 			<b>Total Consultas Realizadas:</b> <%= Estadisticasconsulta.count_by_sql("select count(*) from estadisticasconsultas ;") %> <br/>
 			<br/>
 			<table class="tabla">
