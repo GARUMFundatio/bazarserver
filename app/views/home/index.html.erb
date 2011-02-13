@@ -136,8 +136,34 @@
 				<a href="#" onclick="$('#tab4').show(); $('#conte4').hide();">Cerrar Información</a><br/><br/>
 				<div id="conte4datos">
 				</div>
-			
 			</div>
+			
+			<div class="jqPlot" id="gra01" style="height:360px; width:540px;"></div> 
+
+			<script>
+
+			$.jqplot.config.enablePlugins = true;
+			line1 = [];
+			ii = 0;
+			<% for data in Cluster.select("created_at").group("created_at").order("created_at") %>
+
+				line1[ii] = [ '<%= data.fecha -%>', <%= Cluster.count_by_sql("select count(*) from clusters where created_at = '#{data.fecha}'  group by created_at order by created_at;")  -%>];
+				ii++;
+
+			<% end %>
+
+			plot3 = $.jqplot('gra01', [line1], {
+			    legend:{show:true}, 
+			    title:'Número de Bazares',
+				axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+				tickOptions:{formatString:'%m-%y'}, 
+				            tickInterval:'1 month'
+			    series:[
+			        {label:'Bazares'} 
+			    ]
+			});
+
+			</script>
 		</div>
 		
 		<div id="dash-2">
