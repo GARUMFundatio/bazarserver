@@ -109,8 +109,8 @@
 		
 		<div id="dash-1">
 		
-			<b>Total Directorios:</b> <%= Cluster.count_by_sql("select count(*) from clusters") %> <br/>
-			<b>Total Consultas Realizadas:</b> <%= Estadisticasbazar.count_by_sql("select sum(consultas) from estadisticasbazares  group by fecha order by fecha desc limit 1;") %> <br/>
+			<b>Total Bazares:</b> <%= Cluster.count_by_sql("select count(*) from clusters") %> <br/>
+			<b>Total Consultas Realizadas:</b> <%= Estadisticasconsulta.count_by_sql("select sum(*) from estadisticasconsultas ;") %> <br/>
 			<br/>
 			<table class="tabla">
 			<tr>
@@ -129,12 +129,14 @@
 			<% end %>
 				</td>
 			</tr>
-			<table>
-				<div id="conte4" style="display: none">
-					<a href="#" onclick="$('#tab4').show(); $('#conte4').hide();">Cerrar Información</a><br/><br/>
-					<div id="conte4datos">
-					</div>
+			</table>
+				
+			<div id="conte4" style="display: none">
+				<a href="#" onclick="$('#tab4').show(); $('#conte4').hide();">Cerrar Información</a><br/><br/>
+				<div id="conte4datos">
 				</div>
+			
+			</div>
 		</div>
 		
 		<div id="dash-2">
@@ -183,6 +185,8 @@
 		</script>
 		
 		</div>
+		<div id="dash-4">
+			Tags más usados??
 		</div>
 		
 	
