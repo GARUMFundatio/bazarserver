@@ -1,6 +1,8 @@
 <script>
 	$(function() {
 		$( "#tabs" ).tabs();
+		$( "#dashboard" ).tabs();
+		
 	});
 	</script>
 
@@ -97,8 +99,15 @@
 	
 	
 	<div id="tabs-4">
-
-		<div id="tab4">
+		<div id="dashboard" style="text-align: left;">
+			<ul>
+				<li><a href="#dash-1">General</a></li>
+				<li><a href="#dash-2">Empresas</a></li>
+				<li><a href="#dash-3">Consultas</a></li>
+				<li><a href="#dash-4">Tags</a></li>
+			</ul>
+		
+		<div id="dash-1">
 		
 			<b>Total Directorios:</b> <%= Cluster.count_by_sql("select count(*) from clusters") %> <br/>
 			<b>Total Consultas Realizadas:</b> <%= Estadisticasbazar.count_by_sql("select sum(consultas) from estadisticasbazares  group by fecha order by fecha desc limit 1;") %> <br/>
@@ -120,7 +129,17 @@
 			<% end %>
 				</td>
 			</tr>
-
+			<table>
+				<div id="conte4" style="display: none">
+					<a href="#" onclick="$('#tab4').show(); $('#conte4').hide();">Cerrar Información</a><br/><br/>
+					<div id="conte4datos">
+					</div>
+				</div>
+		</div>
+		
+		<div id="dash-2">
+			
+			<table class="tabla">
 			<tr>
 				<td width="200px">
 			<b>Empresas con más actividad:</b> <br/>
@@ -131,10 +150,13 @@
 			</td>
 
 			</tr>
-		</table>
+			</table>
 		
-		<br/>
+			<br/>
+		</div>
 		
+		<div id="dash-3">
+			
 		<div class="jqPlot" id="chart3" style="height:360px; width:540px;"></div> 
 		
 		<script>
@@ -161,12 +183,8 @@
 		</script>
 		
 		</div>
-	
-		<div id="conte4" style="display: none">
-			<a href="#" onclick="$('#tab4').show(); $('#conte4').hide();">Cerrar Información</a><br/><br/>
-			<div id="conte4datos">
-			</div>
 		</div>
+		
 	
 	</div>
 
