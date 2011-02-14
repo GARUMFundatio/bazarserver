@@ -66,6 +66,7 @@ body {
 
 #user_session_submit,
 #bazarcms_empresa_submit,
+#cajabusqueda .ui-button,
 #footer {
     font-family: "Liberation Serif", georgia, serif;
 }
@@ -117,7 +118,7 @@ body {
     height: 78px;
     margin: 10px;
     text-indent: -9999px;
-    background: url(/images/logo-bazar.png) no-repeat 0 0;
+    background: url(/images/logo-directorio-bazar.png) no-repeat 0 0;
 }
 
 #slogan {
@@ -143,6 +144,21 @@ body {
     background: #F9F9F9;
 	width: 660px;
 	padding: 20px;
+}
+
+/* íconos en gral */
+#contenido a img {
+   vertical-align: middle;
+}
+
+/* Titulares de página */
+
+#contenido .page-title {
+    margin-bottom: 15px;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: normal;
+    color: #666;
 }
 
 #contenido #tabs h3 {
@@ -234,7 +250,9 @@ form.edit_bazarcms_empresa label {
      font-size: 14px;
 }
 
-form label .form-help {
+form label .form-help,
+p.form-help,
+.form-help {
      font-style: italic;
      color: #999;
 }
@@ -284,6 +302,87 @@ form.edit_bazarcms_empresa div.actions {
     background: #30537A url(images/ui-bg_highlight-soft_75_cccccc_1x100.png) repeat-x center center;
     color: #444;
 }
+
+/* Búsqueda de Empresas */
+
+p.busqueda-principal label {
+    display: block;
+    padding-top: 4px;
+    font-size: 14px;
+}
+
+input#busca {
+    position: relative;
+    left: -2px;
+    width: 93%;
+    padding: 8px 10px 10px;
+    border: 1px solid #ccc;
+    border-top: 2px solid #aaa;
+    border-radius: 18px;
+    -moz-border-radius: 18px;
+    -webkit-border-radius: 18px;
+    font-size: 18px;
+    line-height: 26px;
+    cursor: auto !important;
+    background: url(/images/busqueda-bg-lupa.png) no-repeat right top;
+}
+
+input#busca:focus,
+input#busca:active {
+    font-style: normal;
+    background-color: #F2F0E3;
+    color: #444;
+}
+
+#cajabusqueda table {
+    width: 100%;
+    margin: .2em 0 0;
+}
+
+#cajabusqueda table tr td { /* Estilos para la celda con el slider */
+    width: 223px;
+    padding: 8px 11px;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+}
+
+#cajabusqueda table tr td:first-child { /* Estilos para la celda con el "label" */
+    width: 180px;
+    padding: 8px 5px;
+}
+
+#cajabusqueda table tr td:last-child { /* Estilos para la celda con el texto dinámico */
+    width: 211px;
+    padding: 8px 7px;
+}
+
+#cajabusqueda table tr td:last-child input {
+    max-width: 211px !important;
+    cursor: auto !important;
+}
+
+#cajabusqueda .ui-button,
+#cajabusqueda .ui-button .ui-state-default {
+    margin-top: 20px;
+    padding: 0 30px;
+    border-color: #999;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    font-size: 20px;
+    background-image: url(images/ui-bg_glass_75_dadada_1x400.png);
+}
+
+#cajabusqueda .ui-button:hover,
+#cajabusqueda .ui-button:focus,
+#cajabusqueda .ui-button:active,
+#cajabusqueda .ui-button .ui-state-hover,
+#cajabusqueda .ui-button .ui-state-focus,
+#cajabusqueda .ui-button .ui-state-active {
+    background-image: url(/images/ui-bg_glass_d4d4d4_1x150.png);
+    border-color: #777;
+}
+
 
 #footer {
     clear: both;
@@ -468,6 +567,10 @@ select {
 }
 
 #sidebar-items #user-menu .logout-link {
+    margin-right: 8px;
+}
+
+#sidebar-items #user-menu .logout-link {
     padding-left: 3px;
     border-left: 1px solid #999;
 }
@@ -584,6 +687,7 @@ table.tabla tr:first-child :last-child {
     padding:.4em .6em .5em .8em;
     border: 1px solid #cdcdcd;
     border-top: none;
+    border-right: none;
     font-size: 14px;
     font-weight: bold;
 	text-align: left;
@@ -593,7 +697,8 @@ table.tabla tr:first-child :last-child {
     border-right: 1px solid #cdcdcd;
 }
 
-#contenido table.tabla tr:last-child td {
+#contenido table.tabla tr:last-child td,
+#contenido table.tabla tr:last-child th {
     border-bottom: 2px solid #ccc;
 }
 
@@ -629,6 +734,7 @@ table.tabla tr:first-child:hover th {
 }
 
 p.total {
+    margin-top: 0;
     padding-left: 5px;
 }
 
@@ -1170,7 +1276,56 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
 .ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
 .ui-slider-vertical .ui-slider-range-min { bottom: 0; }
-.ui-slider-vertical .ui-slider-range-max { top: 0; }/*
+.ui-slider-vertical .ui-slider-range-max { top: 0; }
+
+/* jQuery UI Slider 1.8.7 con cambios */
+.ui-slider {
+    position: relative;
+    text-align: left;
+    font-size: 19px;
+    background: #e2e2e2 url(/images/bg-slider-garum.png) repeat-x 0 0;
+}
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 23px;
+    height: 23px;
+    border: none;
+    cursor: default;
+    background: url(/images/slider-handle.png) no-repeat center bottom;
+}
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: 15px;
+    display: block;
+    border: 0;
+    background: #9fafd9 url(/images/bg-slider-garum-rango.png) repeat-x 0 0;
+}
+
+.ui-slider-horizontal { height: 7px; }
+.ui-slider-horizontal .ui-slider-handle { top: -9px; margin-left: -11px; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 7px; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.ui-slider-horizontal .ui-state-focus {
+    background-position: center top;
+}
+
+.ui-slider-horizontal .ui-slider-handle:hover {
+    cursor: pointer;
+}
+
+.ui-slider-horizontal .ui-slider-handle:hover,
+.ui-slider-horizontal .ui-slider-handle:focus,
+.ui-slider-horizontal .ui-slider-handle:active {
+    background-position: center top;
+    outline: none;
+}
+
+
+/*
  * jQuery UI Tabs 1.8.7
  *
  * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
