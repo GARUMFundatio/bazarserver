@@ -114,7 +114,7 @@
                     <td>
                         <table class="tabla" cellspacing="0">
                 			<tr>
-                				<th>Nuevos Bazares:</th>
+                				<th>Nuevos Bazares</th>
                 			</tr>
 
             			<% for cluster in Cluster.where("id <> 1").order("created_at desc").limit(10) %>
@@ -125,7 +125,7 @@
         			<td>
             			<table class="tabla" cellspacing="0">
                 			<tr>
-                				<th>Bazares Actualizados:</th>
+                				<th>Bazares Actualizados</th>
                 			</tr>
 
             			<% for cluster in Cluster.where("id <> 1").order("updated_at desc").limit(10) %>
