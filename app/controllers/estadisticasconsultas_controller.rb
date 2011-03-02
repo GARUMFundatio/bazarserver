@@ -66,7 +66,8 @@ class EstadisticasconsultasController < ApplicationController
     @esta.consulta += CGI.unescape(params[:bid])
     
     @esta.save
-
+    empresa = []
+    send_data empresa.to_json
   end
 
   # PUT /estadisticasconsultas/1
