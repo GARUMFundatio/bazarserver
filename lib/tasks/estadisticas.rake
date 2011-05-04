@@ -1,6 +1,9 @@
 
 # estadisticas de los bazares
 
+require "net/http"
+require "uri"
+ 
 namespace :bazar do
 
  desc "Recolectando Información de los bazares"
