@@ -6,6 +6,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'jquery-rails'
 gem 'json' 
+gem 'typhoeus'
 
 # group :development, :test do
 #   gem 'webrat'
