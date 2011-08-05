@@ -3,10 +3,14 @@ class ClustersController < ApplicationController
   layout "bazar"
   
   def index
-    @clusters = Cluster.all.paginate(:page => params[:page], :per_page => 15)
+    @clusters = Cluster.all.paginate(:page => params[:page], :per_page => 500)
 
     respond_to do |format|
-      format.html # index.html.erb
+      if current_user
+        format.html # index.html.erb
+      else 
+        redirect_to '/'
+      end 
       format.xml  { render :xml => @clusters }
       format.json { render :json => @clusters }
     end
@@ -40,12 +44,17 @@ class ClustersController < ApplicationController
   end
 
   def edit
-    @cluster = Cluster.find(params[:id])
+    if current_user 
+      @cluster = Cluster.find(params[:id])
+    end 
   end
 
   def create
-    @cluster = Cluster.new(params[:cluster])
-
+    
+    if current_user 
+      @cluster = Cluster.new(params[:cluster])
+    end 
+    
     respond_to do |format|
       if @cluster.save
         format.html { redirect_to(clusters_url, :notice => 'Cluster was successfully created.') }
@@ -58,8 +67,9 @@ class ClustersController < ApplicationController
   end
 
   def update
-    @cluster = Cluster.find(params[:id])
-
+    if current_user
+      @cluster = Cluster.find(params[:id])
+    end 
     respond_to do |format|
       if @cluster.update_attributes(params[:cluster])
         format.html { redirect_to(clusters_url) }
@@ -83,10 +93,12 @@ class ClustersController < ApplicationController
   end
   
   def destroy
-    @cluster = Cluster.find(params[:id])
-    @cluster.activo = "N"
-    @cluster.save
-
+    if current_user 
+      @cluster = Cluster.find(params[:id])
+      @cluster.activo = "N"
+      @cluster.save
+    end 
+    
     respond_to do |format|
       format.html { redirect_to(clusters_url) }
       format.xml  { head :ok }
