@@ -11,44 +11,42 @@ namespace :bazar do
 
  task :estadisticas => :environment do |t|
    
+   hydra = Typhoeus::Hydra.new
+   
    for cluster in Cluster::all
      puts "cluster: #{cluster.nombre} - #{cluster.url}"
 
      # recojemos la información básica del bazar 
      
      uri = "#{cluster.url}/api/info.json"
-
-     post_body = []
-     post_body << "Content-Type: text/plain\r\n"
-  
-     http = Net::HTTP.new(uri.host, uri.port)
-     http.open_timeout = http.read_timeout = 10
-       
-     request = Net::HTTP::Get.new(uri.request_uri)
-     request.body = post_body.join
-     request["Content-Type"] = "text/plain"
      datos = ""
-     begin 
          
-       res =  Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
-       case res
-       when Net::HTTPSuccess, Net::HTTPRedirection
-         datos = JSON.parse(res.body)
+       r = Typhoeus::Request.new(uri, :timeout => 10000)
+       
+       r.on_complete do |res|
+         logger.debug "-------------> "+res.inspect
+         case res.curl_return_code
+         when 0
+       
+           begin
+           datos = JSON.parse(res.body)
 
-         puts "#{datos.inspect} <-----------"
+           rescue 
+              puts "No se ha podido interpretar el json"
+           else
+
+           puts "#{datos.inspect} <-----------"
          
-         # actualizamos la información del cluster 
+           # actualizamos la información del cluster 
          
-         cluster.empresas = datos['empresas']
-         cluster.save
+           cluster.empresas = datos['empresas']
+           cluster.save
          
-      else
-         puts "ERROR en la petición a #{uri}---------->"+res.error!
-       end       
-       rescue Exception => e
-         puts "Exception leyendo #{cluster.url} Got #{e.class}: #{e}"        
+          end
+      end
      end
      
+     hydra.run
      # actualizamos las estadísticas de este bazar
      puts "actualizamos las estadisticas"
 
@@ -69,55 +67,47 @@ namespace :bazar do
 
      # por cada uno de los bazares obtenemos la lista de empresas. 
 
-     uri = URI.parse("#{cluster.url}/api/empresas.json")
+     uri = "#{cluster.url}/api/empresas.json"
 
-     post_body = []
-     post_body << "Content-Type: text/plain\r\n"
-  
-     http = Net::HTTP.new(uri.host, uri.port)
-     http.open_timeout = http.read_timeout = 20
-       
-     request = Net::HTTP::Get.new(uri.request_uri)
-     request.body = post_body.join
-     request["Content-Type"] = "text/plain"
      datos = ""
-     begin 
          
-       res =  Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
-       case res
-       when Net::HTTPSuccess, Net::HTTPRedirection
-         datos = JSON.parse(res.body)
+       r = Typhoeus::Request.new(uri, :timeout => 5000)
 
-         puts "#{datos.inspect} <----------- datos empresas"
+       r.on_complete do |response|
+         logger.debug "-------------> "+response.inspect
+         case response.curl_return_code
+         when 0
+           begin
+             datos = JSON.parse(resonse.body)
+            rescue 
+              puts "error en los datos"
+           
+            else    
+               puts "#{datos.inspect} <----------- datos empresas"
          
-         for dat in datos 
-            empresa = Estadisticasempresa.find_by_bazar_id_and_empresa_id(cluster.id, dat['id'])
-            puts "empresa #{empresa.inspect}"
-            if (empresa.nil?)
-              puts "No existe lo creo"
-              empresa = Estadisticasempresa.new
-              empresa.empresa_id = dat['id']
-              empresa.bazar_id = cluster.id
-            end 
+               for dat in datos 
+                  empresa = Estadisticasempresa.find_by_bazar_id_and_empresa_id(cluster.id, dat['id'])
+                  puts "empresa #{empresa.inspect}"
+                  if (empresa.nil?)
+                    puts "No existe lo creo"
+                    empresa = Estadisticasempresa.new
+                    empresa.empresa_id = dat['id']
+                    empresa.bazar_id = cluster.id
+                  end 
 
-            empresa.fundada = dat['fundada']
-            empresa.consultas = dat['consultas']
-            empresa.nombre = dat['nombre']
-            empresa.url = dat['url']
+                  empresa.fundada = dat['fundada']
+                  empresa.consultas = dat['consultas']
+                  empresa.nombre = dat['nombre']
+                  empresa.url = dat['url']
 
-            empresa.save
-            
-         end 
-             
-      else
-         puts "ERROR en la petición a #{uri}---------->"+res.error!
-       end       
-      rescue Exception => e
-         puts "Exception leyendo #{cluster.url} Got #{e.class}: #{e}"        
-     end       
-       
+                  empresa.save
+                end
+            end              
+       end
+     hydra.queue r 
    end 
  end
 
+hydra.run 
 
 end
