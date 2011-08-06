@@ -108,9 +108,7 @@ namespace :bazar do
         end #complete
     hydra.queue r 
     end # for   
-   end 
- end
 
-hydra.run 
+end # task
 
-end
+end # namespace 
