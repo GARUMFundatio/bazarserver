@@ -6,11 +6,7 @@ class ClustersController < ApplicationController
     @clusters = Cluster.all.paginate(:page => params[:page], :per_page => 500)
 
     respond_to do |format|
-      if current_user
-        format.html # index.html.erb
-      else 
-        redirect_to '/'
-      end 
+      format.html # index.html.erb
       format.xml  { render :xml => @clusters }
       format.json { render :json => @clusters }
     end

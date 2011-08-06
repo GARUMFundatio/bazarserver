@@ -3,6 +3,7 @@
 
 require "net/http"
 require "uri"
+require "typhoeus"
  
 namespace :bazar do
 
@@ -15,7 +16,7 @@ namespace :bazar do
 
      # recojemos la información básica del bazar 
      
-     uri = URI.parse("#{cluster.url}/api/info.json")
+     uri = "#{cluster.url}/api/info.json"
 
      post_body = []
      post_body << "Content-Type: text/plain\r\n"
