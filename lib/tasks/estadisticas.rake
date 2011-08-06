@@ -101,10 +101,13 @@ namespace :bazar do
                   empresa.url = dat['url']
 
                   empresa.save
-                end
-            end              
-       end
-     hydra.queue r 
+                end # for datos
+              end # exception              
+          end # when
+      
+        end #complete
+    hydra.queue r 
+    end # for   
    end 
  end
 
