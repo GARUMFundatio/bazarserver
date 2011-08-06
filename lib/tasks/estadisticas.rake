@@ -74,7 +74,7 @@ namespace :bazar do
        r = Typhoeus::Request.new(uri, :timeout => 5000)
 
        r.on_complete do |response|
-         logger.debug "-------------> "+response.inspect
+         puts "-------------> "+response.inspect
          case response.curl_return_code
          when 0
            begin
