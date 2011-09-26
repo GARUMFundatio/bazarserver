@@ -11,11 +11,17 @@ namespace :bazar do
 
  task :estadisticas => :environment do |t|
    
-   hydra = Typhoeus::Hydra.new
    
-   for cluster in Cluster::all
-     puts "cluster: #{cluster.nombre} - #{cluster.url}"
+   puts "(a) actualizamos la información de los clusters"
+   puts "-----------------------------------------------"
 
+   for cluster in Cluster::all
+
+
+     puts "\n\ncluster: #{cluster.nombre} - #{cluster.url}"
+     puts "----------------------------------------------\n\n"
+
+     hydra = Typhoeus::Hydra.new
      # recojemos la información básica del bazar 
      
      uri = "#{cluster.url}/api/info.json"
@@ -24,7 +30,7 @@ namespace :bazar do
        r = Typhoeus::Request.new(uri, :timeout => 10000)
        
        r.on_complete do |res|
-         logger.debug "-------------> "+res.inspect
+         puts "-------------> "+res.inspect
          case res.curl_return_code
          when 0
        
@@ -39,14 +45,16 @@ namespace :bazar do
          
            # actualizamos la información del cluster 
          
+	   puts "---------> Actualizamos el número de Empresas"
            cluster.empresas = datos['empresas']
+	   puts "Empresas del cluster #{cluster.nombre}: #{cluster.empresas}"
            cluster.save
          
           end
       end
      end
      
-     hydra.run
+     hydra.queue r 
      # actualizamos las estadísticas de este bazar
      puts "actualizamos las estadisticas"
 
@@ -80,7 +88,8 @@ namespace :bazar do
            begin
              datos = JSON.parse(resonse.body)
             rescue 
-              puts "error en los datos"
+              puts "----------> error en los datos:"
+              puts response.body.inspect
            
             else    
                puts "#{datos.inspect} <----------- datos empresas"
@@ -107,8 +116,8 @@ namespace :bazar do
       
         end #complete
     hydra.queue r 
+    hydra.run
     end # for   
-
 end # task
 
 end # namespace 
