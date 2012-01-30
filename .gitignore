@@ -2,3 +2,4 @@ config/database.yml
 log/
 vendor/
 tmp/
+Gemfile.lock

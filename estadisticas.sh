@@ -1,1 +1,1 @@
-RAILS_ENV=production rake bazar:estadisticas >> /tmp/estadisticas.log
+RAILS_ENV=production bundle exec rake bazar:estadisticas >> /tmp/estadisticas.log
